@@ -6,12 +6,13 @@ const ItemDetail = ({ prod }) => {
       <div className="col">
         <div className="row">
           <div className="col">
-            <img src={prod.foto} alt="foto" />
+            <img src={prod.foto} alt="foto" height="300" width="400" />
           </div>
           <div className="col">
-            <h2>{prod.nombre}nombre</h2>
-            <h3>{prod.categoria}categoria</h3>
-            <h3>{prod.precio}precio</h3>
+            <h2>{prod.categoria}</h2>
+            <h3>{prod.nombre}</h3>
+            <p>Descripcion: {prod.descripcion}</p>
+            <h3>Precio $ {prod.precio}</h3>
           </div>
         </div>
       </div>
