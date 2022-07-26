@@ -6,10 +6,15 @@ let productos = [
     { id: '3' ,categoria: 'cerveza', nombre: "negra", precio: 400, stock: 25, foto:'https://cloudfront-us-east-1.images.arcpublishing.com/infobae/LYPHS6JF65FQ7GTXETIGIT6OTE.jpg'},
 ]
 
-export const getFetch = () => {   
+export const getFetch = (id) => {   
+    
     return new Promise(( resolve, reject )=>{
             setTimeout(()=>{
-                resolve(productos)                
+            if (id){
+                resolve(productos.find(prod=>prod.id===id))
+            } else {
+                resolve(productos)
+            }                
             }, 2000)            
         })       
     }

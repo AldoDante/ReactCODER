@@ -1,6 +1,9 @@
+
 import React from "react";
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
+import { Link } from "react-router-dom";
+
 
 
 const Item = ({ prod }) => {
@@ -14,12 +17,15 @@ const Item = ({ prod }) => {
             Some quick example text to build on the card title and make up the
             bulk of the card's content.
             <div>
-                <p>Precio$ {`${prod.precio}`}</p>  
-                <p>Stock disponible {`${prod.stock}`} </p>
+              <p>Precio$ {`${prod.precio}`}</p>
+              <p>Stock disponible {`${prod.stock}`} </p>
             </div>
-            
           </Card.Text>
-          <Button variant="primary">Salud!</Button>
+   <Link to={`${prod.id}`} >
+   <Button variant="primary">Salud!</Button>
+   </Link>
+            
+        
         </Card.Body>
       </Card>
     </div>
