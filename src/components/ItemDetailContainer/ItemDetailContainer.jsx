@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import { getFetch } from '../../helpers/getFetch'
 import ItemDetail from '../ItemDetail/ItemDetail'
 
-const ItemDetalContainer = () => {
+const ItemDetailContainer = () => {
 
   const [prod, setProducto] = useState({})
   const {detalleId}= useParams()
@@ -15,10 +15,10 @@ const ItemDetalContainer = () => {
 
   return (
     <div>
-      ItemDetalContainer
+      Detail Container
       <ItemDetail prod={prod}/>
     </div>
   )
 }
 
-export default ItemDetalContainer
+export default ItemDetailContainer
