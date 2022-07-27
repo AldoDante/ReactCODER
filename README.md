@@ -1,3 +1,9 @@
+Proyecto De reacjJS: Consiste en un E-comerce creado con React de manera dinamica donde estan modulados
+todos sus componentes los cuales realizan una tarea en particular, el avance del proyecto se realiza cada semana,
+hasta el momento se puede navegar entre la pagina principal, realizar un filtro de productos por categorias y
+ver el detalle de cada producto de manera dinamica
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
