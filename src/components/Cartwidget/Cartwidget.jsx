@@ -7,8 +7,8 @@ const Cartwidget = () => {
       <img
             alt=""
             src= 'https://i.pinimg.com/564x/2d/59/8f/2d598fc06dddb05c96f45f09f0e75b2e.jpg'
-            width="60"
-            height="60"
+            width="40"
+            height="40"
         />
     </div>
   )

@@ -14,8 +14,9 @@ const Item = ({ prod }) => {
         <Card.Body>
           <Card.Title>{`${prod.categoria} - ${prod.nombre}`}</Card.Title>
           <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
+            {/* <div>
+              <p>{prod.descripcion}</p>
+            </div> */}
             <div>
               <p>Precio$ {`${prod.precio}`}</p>
               <p>Stock disponible {`${prod.stock}`} </p>
