@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
+import Inputcount from "../InputCount/Inputcount";
 import ItemCount from "../ItemCount/ItemCount";
 
 const ItemDetail = ({ prod }) => {
+  const [btnSwitch, setBtnSwitch] = useState(true);
+  const onAdd = (cant) => {
+    console.log(`La cantidad es: ${cant}`);
+    setBtnSwitch(false);
+  };
+
   return (
     <div className="row">
       <div className="col">
@@ -18,7 +25,11 @@ const ItemDetail = ({ prod }) => {
         </div>
       </div>
       <div className="col">
-        <ItemCount/>
+        {btnSwitch ? 
+          <ItemCount initial={1} stock={10} onAdd={onAdd} />
+         : 
+          <Inputcount />
+        }
       </div>
     </div>
   );

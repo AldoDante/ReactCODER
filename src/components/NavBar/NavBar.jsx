@@ -27,8 +27,8 @@ const NavBar = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Link to="/">
-                <Nav.Link href="#home">Home</Nav.Link>
+              <Link className="nav-link" to="/">
+                Home
               </Link>
               <Nav.Link href="#link">Nosotros</Nav.Link>
               <NavDropdown title="Estilos" id="basic-nav-dropdown">
