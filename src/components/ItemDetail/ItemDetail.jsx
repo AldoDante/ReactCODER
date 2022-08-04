@@ -1,14 +1,19 @@
 import React, { useState } from "react";
+import { useCartContext } from "../../context/CartContext";
 import Inputcount from "../InputCount/Inputcount";
 import ItemCount from "../ItemCount/ItemCount";
 
 const ItemDetail = ({ prod }) => {
   const [btnSwitch, setBtnSwitch] = useState(true);
+
+  const{ addToCart } = useCartContext()
+
   const onAdd = (cant) => {
     console.log(`La cantidad es: ${cant}`);
+    addToCart({...prod, cantidad: cant})
     setBtnSwitch(false);
   };
-
+  // console.log(cartList)
   return (
     <div className="row">
       <div className="col">

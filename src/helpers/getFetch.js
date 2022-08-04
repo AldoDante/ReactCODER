@@ -5,6 +5,8 @@ let productos = [{
         descripcion:"Distinguida perfectamente por su sabor amargo, pero floral. Su tono es oro profundo. Contiene 8% de alcohol.",
         precio: 500,
         stock: 18,
+        cantidad:0,
+   
         foto: 'https://e00-elmundo.uecdn.es/assets/multimedia/imagenes/2022/02/26/16458586559431.jpg'
     },
     {
