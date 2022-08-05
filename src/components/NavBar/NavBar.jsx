@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link, NavLink } from "react-router-dom";
+import { useCartContext } from "../../context/CartContext";
 
 import logo from "../../images/peces.png";
 import Cartwidget from "../Cartwidget/Cartwidget";
 
+
 const NavBar = () => {
+  const {totalCantidad} = useCartContext()
   return (
     <div>
       <Navbar bg="light" expand="lg">
@@ -47,6 +50,7 @@ const NavBar = () => {
             </Nav>
           </Navbar.Collapse>
           <Link to="/cart">
+            {totalCantidad()!== 0 && totalCantidad()}
             <Cartwidget />
           </Link>
         </Container>
@@ -57,15 +61,4 @@ const NavBar = () => {
 
 export default NavBar;
 
-{
-  /* <Navbar.Brand href="#home">
-            <img
-              alt=""
-              src= {logo}
-              width="30"
-              height="30"
-              className="d-inline-block align-top"
-            />{' '}
-            React Bootstrap
-          </Navbar.Brand> */
-}
+
