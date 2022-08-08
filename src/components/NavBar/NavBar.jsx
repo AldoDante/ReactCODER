@@ -51,7 +51,8 @@ const NavBar = () => {
           </Navbar.Collapse>
           <Link to="/cart">
             {totalCantidad()!== 0 && totalCantidad()}
-            <Cartwidget />
+            {totalCantidad()!== 0 && <Cartwidget />}
+            
           </Link>
         </Container>
       </Navbar>
