@@ -28,11 +28,15 @@ const ItemListContainer = ({ saludo }) => {
   //   console.log(`La cantidad es: ${cant}`);
   // };
 
+  const Loading = ()=>{
+    return <h3>Now Loading...</h3>
+  }
+
   return (
     <div>
       {saludo}
 
-      {loading ? <h3>Now Loading...</h3> : <ItemList productos={productos} />}
+      {loading ? <Loading/> : <ItemList productos={productos} />}
 
       {/* <ItemCount initial={1} stock={5} onAdd={onAdd} /> */}
     </div>
