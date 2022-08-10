@@ -27,8 +27,8 @@ const Cart = () => {
         <h4>{totalCompra()===0 &&`Volver al Menu`}</h4>
         </Link>
       </div>
-      <button onClick={clearCart}>Vaciar Carrito</button>
-    </div>
+        {totalCompra()!==0 && <button onClick={clearCart}>Vaciar Carrito</button>}
+      </div>
   )
 }
 
