@@ -11,6 +11,7 @@ const ItemListContainer = ({ saludo }) => {
   const [loading, setLoading] = useState(true);
   const { categoriaId } = useParams();
 
+ /* A useEffect hook that is executed when the component is mounted and when the categoriaId changes. */
   useEffect(()=>{
     if (categoriaId) {
         const db = getFirestore()

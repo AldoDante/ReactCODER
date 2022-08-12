@@ -11,6 +11,8 @@ const ItemDetailContainer = () => {
 
   const {detalleId}= useParams()
 
+  /* A hook that is called when the component is mounted. It is a function that is called when the
+  component is mounted. */
   useEffect(()=>{
     const db = getFirestore()
     const queryProducto = doc(db, 'productos', detalleId)
@@ -18,7 +20,7 @@ const ItemDetailContainer = () => {
     .then(resp => setProducto({id: resp.id, ...resp.data()}))
     .catch(err => console.log(err))
     .finally(()=>setLoading(false))
-  },[])
+  },[detalleId])
 
   // useEffect(()=>{
   //   getFetch(detalleId)

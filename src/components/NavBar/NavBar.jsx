@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+// import React, { useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -33,7 +33,7 @@ const NavBar = () => {
               <Link className="nav-link" to="/">
                 Home
               </Link>
-              <Nav.Link href="#link">Nosotros</Nav.Link>
+              <Nav.Link>Nosotros</Nav.Link>
               <NavDropdown title="Estilos" id="basic-nav-dropdown">
                 <Link to="/categoria/Cerveza Rubia">
                 <NavDropdown.Item href="#action/3.1">Cerveza Rubia</NavDropdown.Item>
