@@ -1,4 +1,4 @@
-![image]https://drive.google.com/file/d/1WaEkEepjVMTh42ZicfAAJT86Hrf6X4kH/view
+![image]https://drive.google.com/file/d/1WaEkEepjVMTh42ZicfAAJT86Hrf6X4kH/view?usp=sharing
 
 # CraftBeer Cerveceria Descripción.
 
