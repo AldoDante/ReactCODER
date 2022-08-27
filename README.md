@@ -1,78 +1,18 @@
-https://drive.google.com/drive/folders/1YFfKSi6Zi_pyYZjgWncOl7QebbcU7RRM
+![image]https://drive.google.com/file/d/1WaEkEepjVMTh42ZicfAAJT86Hrf6X4kH/view
 
-Proyecto De reacjJS: Consiste en un E-comerce creado con React de manera dinamica donde estan modulados
-todos sus componentes los cuales realizan una tarea en particular, el avance del proyecto se realiza cada semana,
-hasta el momento se puede navegar entre la pagina principal, realizar un filtro de productos por categorias y
-ver el detalle de cada producto de manera dinamica
+# CraftBeer Cerveceria Descripción.
+
+*CraftBeer* : Consiste en un E-comerce creado con React de una micro cerveceria con 9 estilos de cerveza artesanal dividos en tres catetorias, Rubia, Roja y Negra, dichos estilos pueden ser filtrados con las opciones que se encuentran en la barra de navegacion. Se puede cargar productos en el carrito de compras en la cantidad que el usuario lo desee y en base al stock disponible, en el CartWidget se visualiza la cantidad de productos que se encuentran cargados. Ingresando al Carrito se pude ver el desgloce de la compra, Productos en forma individual con sus cantidades y subtotal.
+La compra se realiza a traves del llenado de un formulario con los datos del comprador. Todavia no tiene la opcion de compra con tarjeta de credito ni Mercado Pago.
 
 
-# Getting Started with Create React App
+# Librerías & Dependencias
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+ - **[react](https://es.reactjs.org/)** -> Para poder utilizar JSX. Version: ^18.2.0
+ - [**Boostrap Vanilla**](https://react-bootstrap.github.io/getting-started/introduction) -> Para otorgar estilos personalizados de una manera facil y eficiente. Version: ^5.1.3
+ -  [**React Bootstrap**](https://react-bootstrap.github.io/getting-started/introduction) -> Para otorgar estilos personalizados con el uso de componentes, que hace todo mas legible y simple. Version: ^2.4.0
+ - **[react-icons](https://react-icons.github.io/react-icons/)** Version: ^4.4.0
+ - **[react-router-dom](https://v5.reactrouter.com/web/guides/quick-start)** -> Para realizar una navegacion entre componentes dinamicamente estableciendo rutas con parametros. Permite que la aplicación sea una SPA. Version: ^6.3.0
+ - [**Firebase**](https://firebase.google.com/docs/firestore/quickstart) ->  Base de datos para los productos. Version: ^9.9.2
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
