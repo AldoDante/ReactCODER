@@ -1,20 +1,30 @@
 import { useState } from "react";
 
+/* A React component that is used to count the number of items in the cart. */
 const ItemCount = ({ initial = 1, stock = 10, onAdd }) => {
   const [count, setCount] = useState(initial);
 
+  
+  /**
+   * If the count is less than the stock, then add one to the count, otherwise alert the user that
+   * there is not enough stock.
+   */
   const handleAdd = () => {
-    if (count < stock) {
-      setCount(count + 1);
-    }
+    count < stock ? setCount(count + 1) : alert(`No hay stock suficiente: ${stock}`)
   };
+ /**
+  * If the count is greater than the initial value, then set the count to the count minus 1.
+  */
   const handleSubs = () => {
     if (count > initial) {
       setCount(count - 1);
     }
   };
 
-  const handleAddToCart = (handleSwitch) => {
+ /**
+  * If the count is less than the stock, then add the count to the cart.
+  */
+  const handleAddToCart = () => {
     if (count < stock) {
      
       onAdd(count);
@@ -23,6 +33,7 @@ const ItemCount = ({ initial = 1, stock = 10, onAdd }) => {
   };
 
   return (
+    <>
     <div className="d-flex">
       <div className="justify-content-center card w-25">
         <label>{count}</label>
@@ -40,32 +51,10 @@ const ItemCount = ({ initial = 1, stock = 10, onAdd }) => {
         </button>
       </div>
     </div>
+    </>
   );
 };
 
 export default ItemCount;
 
-// import {useState} from 'react'
 
-// const ItemCount = ({initial=1, stock=10, onAdd}) => {
-//   const [count, setCount] = useState(1)
-//   const handleAdd = () =>{
-//     if (count<stock){
-//       setCount(count +1)
-//     }
-//   }
-//   const handleSubtract = () =>{
-//     if (count>stock){
-//       setCount(count -1)
-//     }
-//   return (
-//     <div className= "card w-25">
-//       <label>{ count }</label>
-//       <button className="" onClick={handleAdd}>Agregar</button>
-//       <button className="" onClick={handleSubtract}>Quitar</button>
-//       <button className="" onClick={()=> onAdd(count)}>Agregar Carrito</button>
-//     </div>
-//   )
-// }
-// }
-// export default ItemCount

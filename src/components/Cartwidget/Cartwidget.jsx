@@ -1,16 +1,24 @@
-import React from 'react'
-import logo from '../../images/carrito.png'
+import { useCartContext } from '../../context/CartContext'
+import  {FaShoppingCart} from 'react-icons/fa'
 
+/**
+ * It's a React component that renders a button with a shopping cart icon and a number inside the
+ * button. The number is the total amount of items in the cart.
+ */
 const Cartwidget = () => {
+
+  /* It's destructuring the `totalAmount` function from the `useCartContext` hook. */
+  const {totalAmount} = useCartContext()
+   
   return (
-    <div>
-      <img
-            alt=""
-            src= 'https://i.pinimg.com/564x/2d/59/8f/2d598fc06dddb05c96f45f09f0e75b2e.jpg'
-            width="40"
-            height="40"
-        />
-    </div>
+    <>
+      <button id='boton-carrito'><FaShoppingCart  fontSize='40px'/>
+      
+        {/* It's a ternary operator. If the total amount is not equal to zero, then it will render the
+        span with the total amount. Otherwise, it will render nothing. */}
+        {totalAmount() !== 0 && <span style={{ fontSize: "30px" }}> {totalAmount()}</span>}
+      </button>
+    </>
   )
 }
 

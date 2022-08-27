@@ -1,37 +1,40 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-// import { getFetch } from '../../helpers/getFetch'
 import ItemDetail from '../ItemDetail/ItemDetail'
 import { doc, getDoc, getFirestore } from 'firebase/firestore'
+import { Loading } from '../../Loading/Loading'
+import NotFound from '../Notfound/NotFound'
 
+/* A function that is called when the component is mounted. */
 const ItemDetailContainer = () => {
 
-  const [prod, setProducto] = useState({})
-  const [loading, setLoading]= useState (true)
+  const [prod, setProd] = useState({}) /* Creating a state variable called prod and a function to update it called setProd. */
+  
+  const [loading, setLoading]= useState (true) /* Creating a state variable called loading and a function to update it called setLoading. */
+  
+  const {detailId}= useParams()/* Getting the id from the url. */
 
-  const {detalleId}= useParams()
 
-  /* A hook that is called when the component is mounted. It is a function that is called when the
-  component is mounted. */
+  /* A function that is called when the component is mounted. */
   useEffect(()=>{
     const db = getFirestore()
-    const queryProducto = doc(db, 'productos', detalleId)
-    getDoc(queryProducto)
-    .then(resp => setProducto({id: resp.id, ...resp.data()}))
+    const queryProduct = doc(db, 'products', detailId)
+    getDoc(queryProduct)
+    .then(resp => setProd({id: resp.id, ...resp.data()}))
     .catch(err => console.log(err))
     .finally(()=>setLoading(false))
-  },[detalleId])
+  },[detailId])
 
-  // useEffect(()=>{
-  //   getFetch(detalleId)
-  //   .then(resp=>setProducto(resp))
-  // }, [])
 
   return (
-    <div>
-    
-      <ItemDetail prod={prod}/>
-    </div>
+    <>
+      <br/>
+      {loading ? <Loading/>
+            
+      :  prod.name === undefined ? <NotFound/> : <ItemDetail  prod={prod}/>
+      }   
+      
+    </>
   )
 }
 

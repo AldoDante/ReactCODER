@@ -1,68 +1,108 @@
-import { addDoc, collection, getFirestore } from "firebase/firestore"
 import { useCartContext } from '../../context/CartContext'
 import { Link } from 'react-router-dom'
 import { useState } from "react"
+import Form from "../Form/Form"
+import { setOrder, updateStock } from "../../helpers/Helpers"
+import CartList from '../CartList/CartList'
+import { Card } from "react-bootstrap"
+import CardHeader from 'react-bootstrap/esm/CardHeader'
 
 
+/* A function that saves the order information to store in Firestore. */
 const Cart = () => {
 
-  const {cartList, clearCart, removeItem, totalCompra} = useCartContext()
+  /* Destructuring the cartList, clearCart and totalBuyout from the useCartContext hook. */
+  const {cartList, clearCart, totalBuyout} = useCartContext()
+  
+  /* Setting the id state to an empty string. */
   const [id, setId] = useState ('')
 
-  const saveOrder = () =>{
-    const orderDate = new Date()
-    const order = {}
-    order.buyer = {name:'Aldo', phone: '388497884', email:'dante@gmail.com' }
+  /* A function that saves the order information to store in Firestore. */
+  const saveOrder = async (e, buyerData) => { 
+    e.preventDefault()
 
-    order.item = cartList.map(prod=>{
-      return{
-        id: prod.id,
-        product: prod.nombre,
-        price: prod.precio
-      }
+    const order = {} /*empty order object*/
+    order.buyer =  buyerData /*buyer state set by the form*/
+
+
+    /* Creating a new array with the properties of interest (product, id, price) from the cartList
+    array. */
+    order.items = cartList.map(prod => { 
+        return {
+            product: prod.name,
+            id: prod.id,
+            price: prod.price
+        }
     })
-    order.total = totalCompra()
-    order.date = orderDate
-    
-    const db = getFirestore()
-    const queryOrders = collection(db, 'orders')
-    addDoc(queryOrders, order)
-    .then(resp => setId(resp.id))
-    .catch(err => console.log(err))
-    .finally(()=> clearCart())
 
+    order.date = new Date() /* Adding a date to the order. */
+    order.total = totalBuyout() /* Adding the total price to the order. */
+        
+    setOrder(order) /* A function that saves the order information to store in Firestore. */
+    .then(resp => setId(resp.id)) /* Setting the id of the order to show later. */
     
-  }
+    updateStock(cartList, clearCart) /* Updating the stock of the items bought. */
+}
+
 
   return (
-    <div>
-      <h1>Carrito</h1>
-      <ul>
-        {cartList.map(item=>(
-         <li key={item.id}>
-          <div className="w-25 d-flex">
-            <img src={item.foto} alt="Foto" className='w-50'/>
-            Nombre: {item.nombre} Cantidad: {item.cantidad} Precio: ${item.precio*item.cantidad}
-          </div>
-          <button onClick={()=>removeItem(item.id)}>Eliminar</button>
-         </li> 
-          ))}
-          
-      </ul>
-      <div>
-        <h4>{totalCompra()!==0 &&`Total de la Compra: ${totalCompra()}`}</h4>
-        <h4>{totalCompra()===0 &&`Sin Productos`}</h4>
-        <h3>{totalCompra()===0 && `Su Compra fue procesada con el ID:  ${id}`}</h3>
+      <>            
+            <br/>
 
-        <Link to="/" >
-        <h4>{totalCompra()===0 &&`Volver al Menu`}</h4>
-        </Link>
-      </div>
-      <div>
-        {totalCompra()!==0 && <button onClick={saveOrder} >Comprar</button>}
-      </div>
-        {totalCompra()!==0 && <button onClick={clearCart}>Vaciar Carrito</button>}
-    </div>
+
+           
+            {/* Checking if the id state is empty. If it is empty, it will not show the card. If it is
+            not empty, it will show the card.*/}
+            {id !== '' &&
+            <div>
+                <Card className="text-center mx-auto" style={{ width: '20rem' , borderRadius:"12px"}}>
+                    <CardHeader style={{ backgroundColor: "#212529", color: "white"}}>¡COMPRA EXITOSA!</CardHeader>
+                    <Card.Text>{`Su numero de orden es ${id}`}</Card.Text>
+                </Card>
+                <br/>
+            </div> 
+             }
+            
+            <br/>
+            {/* Checking if the cartList array is empty. If it is empty, it will show a card with a
+            message and a button to go to the shop. If it is not empty, it will show the cart. */}
+            {cartList.length === 0 ? 
+
+            <Card className="text-center mx-auto" style={{ width: '10rem' }}>
+                <CardHeader>CARRITO VACIO</CardHeader>
+                <Link to="/">
+                    <button className="btn btn-outline-dark">Ir a comprar</button>
+                </Link>
+            </Card>            
+            :
+            <div className='row'>
+              <div className="col-8">
+                <h1>CARRITO</h1>
+                <CartList/>
+                <br/>  
+            
+            <button className="btn btn-outline-dark" onClick={clearCart} >Vaciar el Carrito</button>
+           
+              </div>
+              <div className="col-3 filters summary">
+                
+                <Card className="text-center mx-auto" style={{ width: '10rem', color:'#343a40' }}>
+                    <CardHeader>TOTAL DE LA COMPRA</CardHeader>
+                    <h3>${totalBuyout()}</h3>
+                </Card>
+                <br/>
+               
+                  {/* Passing the saveOrder function as a prop to the Form component. */}
+                  <Form saveOrder={saveOrder} />
+              </div>
+                <br/>
+                <br/>
+                
+            </div>
+            }
+            
+        </>
+    
   )
 }
 

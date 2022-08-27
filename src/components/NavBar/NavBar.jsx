@@ -1,28 +1,24 @@
 // import React, { useEffect } from "react";
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
-import { Link, NavLink } from "react-router-dom";
-import { useCartContext } from "../../context/CartContext";
-
-import logo from "../../images/peces.png";
+import { Container, Nav, Navbar } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import logo from "../../images/logoCraft1.png";
 import Cartwidget from "../Cartwidget/Cartwidget";
 
 
+/* A function that returns the NavBar component. */
 const NavBar = () => {
-  const {totalCantidad} = useCartContext()
+  
   return (
-    <div>
-      <Navbar bg="light" expand="lg">
-        <Container>
+    <>
+      <Navbar bg="black" variant="dark" expand="lg">
+        <Container className="nav">
           <Link to="/">
-            <Navbar.Brand href="#home">
+            <Navbar.Brand>
               <img
-                alt=""
+                alt="Logo"
                 src={logo}
-                width="60"
-                height="60"
+                width="170"
+                height="120"
                 className="d-inline-block align-top"
               />
             </Navbar.Brand>
@@ -33,30 +29,24 @@ const NavBar = () => {
               <Link className="nav-link" to="/">
                 Home
               </Link>
-              <Nav.Link>Nosotros</Nav.Link>
-              <NavDropdown title="Estilos" id="basic-nav-dropdown">
-                <Link to="/categoria/Cerveza Rubia">
-                <NavDropdown.Item href="#action/3.1">Cerveza Rubia</NavDropdown.Item>
-                </Link>
-                <NavDropdown.Divider />
-                <Link to='/categoria/Cerveza Roja'>
-                <NavDropdown.Item href="#action/3.2">Cerveza Roja</NavDropdown.Item>
-                </Link>
-                <NavDropdown.Divider />
-                <Link to='/categoria/Cerveza Negra'>
-                <NavDropdown.Item href="#action/3.3">Cerveza Negra</NavDropdown.Item>
-                </Link>
-              </NavDropdown>
+              <Link className="nav-link" to="/category/Cerveza Rubia">
+                Cerveza Rubia
+              </Link>
+              <Link className="nav-link" to="/category/Cerveza Roja">
+                Cerveza Roja
+              </Link>
+              <Link className="nav-link" to="/category/Cerveza Negra">
+                Cerveza Negra
+              </Link>
             </Nav>
           </Navbar.Collapse>
+          {/* A link to the cart page. */}
           <Link to="/cart">
-            {totalCantidad()!== 0 && totalCantidad()}
-            {totalCantidad()!== 0 && <Cartwidget />}
-            
+            <Cartwidget />      
           </Link>
         </Container>
       </Navbar>
-    </div>
+    </>
   );
 };
 

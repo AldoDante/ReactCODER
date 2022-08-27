@@ -3,40 +3,48 @@ import { useCartContext } from "../../context/CartContext";
 import Inputcount from "../InputCount/Inputcount";
 import ItemCount from "../ItemCount/ItemCount";
 
+
 const ItemDetail = ({ prod }) => {
+ /* A state that is used to switch between the ItemCount and Inputcount components. */
   const [btnSwitch, setBtnSwitch] = useState(true);
 
+  /* Destructuring the addToCart function from the useCartContext hook. */
   const{ addToCart } = useCartContext()
 
-  const onAdd = (cant) => {
-    console.log(`La cantidad es: ${cant}`);
-    addToCart({...prod, cantidad: cant})
+ 
+  /**
+   * OnAdd is a function that takes an amount as an argument and returns a function that adds the
+   * product to the cart and sets the button switch to false.
+   */
+  const onAdd = (amount) => {
+    addToCart({...prod, amount: amount})
     setBtnSwitch(false);
   };
-  // console.log(cartList)
+
   return (
+    <>
     <div className="row">
       <div className="col">
         <div className="row">
           <div className="col">
-            <img src={prod.foto} alt="foto" height="300" width="400" />
+            <img src={prod.image} alt="foto" height="300" width="400" />
           </div>
-          <div className="col">
-            {/* <h2>{prod.categoria}</h2> */}
-            <h3>{prod.nombre}</h3>
-            <p>Descripcion: {prod.descripcion}</p>
-            <h3>Precio $ {prod.precio}</h3>
+          <div className="col">        
+            <h3>{prod.name}</h3>
+            <>Descripcion: {prod.description}</ >
+            <h3>Precio $ {prod.price}</h3>
           </div>
         </div>
       </div>
       <div className="col">
         {btnSwitch ? 
-          <ItemCount initial={1} stock={10} onAdd={onAdd} />
+          <ItemCount initial={1} stock={prod.stock} onAdd={onAdd} />
          : 
           <Inputcount />
         }
       </div>
     </div>
+    </>
   );
 };
 

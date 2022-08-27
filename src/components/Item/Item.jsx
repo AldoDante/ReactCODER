@@ -1,35 +1,39 @@
 import React from "react";
-import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
-
+import CardHeader from 'react-bootstrap/esm/CardHeader'
 
 
 const Item = ({ prod }) => {
   return (
-    <div>
-      <Card style={{ width: "18rem" }}>
-        <Card.Img variant="top" src={prod.foto} />
+    <>
+      <Card className="products">
+        <Card.Img variant="top" src={prod.image} alt={prod.name} />
         <Card.Body>
-          <Card.Title>{`${prod.categoria} - ${prod.nombre}`}</Card.Title>
-          <Card.Text>
-            {/* <div>
-              <p>{prod.descripcion}</p>
-            </div> */}
-            <div>
-              <p>Precio$ {`${prod.precio}`}</p>
-              <p>Stock disponible {`${prod.stock}`} </p>
-            </div>
+          <Card.Title>{`${prod.category} - ${prod.name}`}</Card.Title>
+          <Card.Subtitle>{`${prod.category}`}</Card.Subtitle>
+          <Card.Text>         
+              Precio$ {`${prod.price}`}
+              <br/>
+              {/* It's a ternary operator. If the condition is true, it will render the first part,
+              otherwise it will render the second part. */}
+              {prod.stock !== 1 && <>Stock disponible {`${prod.stock}`} </>}         
           </Card.Text>
-   <Link to={`/detalle/${prod.id}`} >
-   <Button variant="primary">Salud!</Button>
-   </Link>
-            
-        
+          {/* It's a ternary operator. If the condition is true, it will render the first part,
+          otherwise it will render the second part. */}
+          {prod.stock === 1? 
+            <CardHeader>Sin Stock</CardHeader> 
+            :
+            <Link to={`/detail/${prod.id}`} >
+            <button className="btn btn-outline-dark">COMPRAR</button>
+            </Link>
+          }       
         </Card.Body>
       </Card>
-    </div>
+    </>
   );
 };
 
 export default Item;
+
+
